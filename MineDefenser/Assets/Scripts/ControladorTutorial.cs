@@ -155,6 +155,97 @@ public class ControladorTutorial : MonoBehaviour
         etapaConcluida = false;
         GameObject besta = GameObject.Find("Besta(Clone)");
         besta.GetComponent<Armas>().combustivel = 3;
+        //Chama a nova etapa
+        StartCoroutine(Carvao());
+
+        yield return null;
+    }
+
+    IEnumerator Carvao()
+    {
+        //Escrevendo os primeiros textos
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(EscreverTextoTutorial(3));
+        yield return new WaitForSeconds(7f);
+        StartCoroutine(EscreverTextoTutorial(4));
+        yield return new WaitForSeconds(4f);
+        textoControles.text = controles[5];
+        textoControles2.text = controles[5];
+        //Deiaxando o painel dos controles visivel
+        painelControles.SetActive(true);
+        antigoParent = objetosInterativos[3].transform.parent;
+        objetosInterativos[3].transform.SetParent(painelControles.transform);
+        while(!etapaConcluida)
+        {
+            if(player.inventario == "machado") etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        objetosInterativos[3].transform.SetParent(antigoParent);
+        textoControles.text = controles[6];
+        textoControles2.text = controles[6];
+        yield return new WaitForSeconds(1f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        while(!etapaConcluida)
+        {
+            if(player.madeira > 0) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
+        StartCoroutine(EscreverTextoTutorial(5));
+        yield return new WaitForSeconds(3f);
+        while(!etapaConcluida)
+        {
+            if(player.ouro == 0) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        yield return new WaitForSeconds(1f);
+        painelControles.SetActive(true);
+        textoControles.text = controles[7];
+        textoControles2.text = controles[7];
+        yield return new WaitForSeconds(3f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        StartCoroutine(EscreverTextoTutorial(6));
+        while(!etapaConcluida)
+        {
+            if(player.carvao > 0) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
+        StartCoroutine(EscreverTextoTutorial(7));
+        yield return new WaitForSeconds(2f);
+        textoControles.text = controles[8];
+        textoControles2.text = controles[8];
+        painelControles.SetActive(true);
+        antigoParent = objetosInterativos[4].transform.parent;
+        objetosInterativos[4].transform.SetParent(painelControles.transform);
+        while(!etapaConcluida)
+        {
+            if(player.inventario == "carvao") etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        objetosInterativos[4].transform.SetParent(antigoParent);
+        textoControles.text = controles[9];
+        textoControles2.text = controles[9];
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        GameObject besta = GameObject.Find("Besta(Clone)");
+        while(!etapaConcluida)
+        {
+            if(besta.GetComponent<Armas>().combustivel > 3) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
+        Debug.Log("Abastecida");
+        
         yield return null;
     }
 }

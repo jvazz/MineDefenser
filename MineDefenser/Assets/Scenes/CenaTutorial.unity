@@ -27440,17 +27440,34 @@ MonoBehaviour:
   - "Muito bem! Mas mais zumbis est\xE3o vindo, para derrot\xE1los facilmente, vamos
     contruir algumas defesas."
   - "Nossa besta ir\xE1 atirar nos inimigos enquanto eles estiverem p\xF3ximos."
+  - "Nossas defesas s\xE3o eficientes, mas precisam de carv\xE3o para funcionarem.
+    O alerta amarelo avisa que o cobust\xEDvel est\xE1 perto do fim, j\xE1 o vermelho,
+    indica que acabou completamente."
+  - "Para produzir carv\xE3o, precisamos de madeira, que conseguimos cortando as
+    \xE1rvores."
+  - "Exelente! Agora constua uma carvoeira para transformarmos as madeiras em carv\xE3o
+    vegetal."
+  - "Espere o carv\xE3o ficar pronto"
+  - "Agora que temos carv\xE3o podemos abastecer nossas armas"
   controles:
   - Clique na espada, aperte a tecla "2" ou utilize o scroll do mouse
   - Clique no zumbi para causar dano
-  - "Para connstruir defesas, clique no \xEDcone da bancada de trabalho"
+  - "Para construir defesas, clique no \xEDcone da bancada de trabalho"
   - "Clique no \xEDcone da besta"
   - "Clique em algum esa\xE7o de contru\xE7\xE3o para instalar uma besta"
+  - Clique no machado, aperte a tecla "3" ou utilize o scroll do mouse
+  - "Clique algumas vezes em uma \xE1rvore para cort\xE1-la"
+  - "Clique na carvoeira para produzir carv\xE3o"
+  - "Clique no recipiente de carv\xE3o, aperte a tecla \"7\" ou utilize o scroll
+    do mouse"
+  - "Clique na arma para completar seu combust\xEDvel"
   painelControles: {fileID: 104574579}
   objetosInterativos:
   - {fileID: 1951346252}
   - {fileID: 554895881}
   - {fileID: 2078822522}
+  - {fileID: 1347504274}
+  - {fileID: 743985159}
   zumbiTutorial: {fileID: 712350456439879649}
   scriptsAcessados:
   - {fileID: 1623597291}
