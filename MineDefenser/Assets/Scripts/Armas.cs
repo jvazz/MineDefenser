@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Armas : MonoBehaviour
 {
-   public Transform alvo;
+    public Transform alvo;
     public float raio = 8;
     public Transform parteQueGira;
     public GameObject projetil;
@@ -164,7 +164,7 @@ public class Armas : MonoBehaviour
         {
             if(!painelUpgradesAtivado)
             {
-                if(player.lapisLazuli >= 5)
+                if(player.lapisLazuli >= 1)
                 {
                     painelUpgradesAtivado = true;
                     painelUpgrades.SetActive(true);
@@ -198,7 +198,7 @@ public class Armas : MonoBehaviour
 
     public void BotaoMelhoria(string upgradeBotao)
     {
-        player.lapisLazuli -= 5;
+        player.lapisLazuli -= 1;
         upgrade = upgradeBotao;
 
         if(upgrade == "alcance")
