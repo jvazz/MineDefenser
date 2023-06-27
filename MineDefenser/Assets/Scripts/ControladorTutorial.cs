@@ -244,8 +244,82 @@ public class ControladorTutorial : MonoBehaviour
         }
         etapaConcluida = false;
         textoControles2.gameObject.SetActive(false);
-        Debug.Log("Abastecida");
+        StartCoroutine(Mina());
         
+        yield return null;
+    }
+    
+    IEnumerator Mina()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(EscreverTextoTutorial(8));
+        yield return new WaitForSeconds(7f);
+        StartCoroutine(EscreverTextoTutorial(9));
+        yield return new WaitForSeconds(7f);
+        player.ouro = 100;
+        objetosInterativos[1].GetComponent<Button>().interactable = false;
+        textoControles.text = controles[10];
+        textoControles2.text = controles[10];
+        //Deiaxando o painel dos controles visivel
+        painelControles.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        objetosInterativos[5].SetActive(true);
+        while(!etapaConcluida)
+        {
+            if(player.ouro <= 0) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        objetosInterativos[5].SetActive(false);
+        textoControles2.gameObject.SetActive(false);
+        textoControles.text = controles[11];
+        textoControles2.text = controles[11];
+        painelControles.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        while(!etapaConcluida)
+        {
+            if(scriptsAcessados[2].GetComponent<Camera>().estaNaMina) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(EscreverTextoTutorial(10));
+        yield return new WaitForSeconds(4f);
+        StartCoroutine(EscreverTextoTutorial(11));
+        yield return new WaitForSeconds(3f);
+        textoControles.text = controles[12];
+        textoControles2.text = controles[12];
+        painelControles.SetActive(true);
+        antigoParent = objetosInterativos[6].transform.parent;
+        objetosInterativos[6].transform.SetParent(painelControles.transform);
+        //Conferindo se o comando foi cumprido
+        while(!etapaConcluida)
+        {
+            if(player.inventario == "picareta") etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        //Volta o elemento destacado da HUD para seu estado normal
+        objetosInterativos[6].transform.SetParent(antigoParent);
+        textoControles.text = controles[13];
+        textoControles2.text = controles[13];
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        while(!etapaConcluida)
+        {
+            if(player.lapisLazuli > 0) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
+        StartCoroutine(EscreverTextoTutorial(12));
+
         yield return null;
     }
 }

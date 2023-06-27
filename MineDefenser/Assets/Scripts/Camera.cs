@@ -6,7 +6,7 @@ public class Camera : MonoBehaviour
 {
     [SerializeField] Vector3 posicaoMina;
     Vector3 posicaoInicial;
-    [SerializeField] bool estaNaMina;
+    public bool estaNaMina;
     public GameObject cameraMiniMapa;
 
     // Start is called before the first frame update

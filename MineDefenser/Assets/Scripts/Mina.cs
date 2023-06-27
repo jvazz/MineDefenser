@@ -64,6 +64,7 @@ public class Mina : MonoBehaviour
             minaPanel.SetActive(false);
             placaMina.SetActive(false);
             minaAberta = true;
+            player.ouro -= Mathf.RoundToInt(precoAbrirMina);
             //cam.GetComponent<Camera>().AndarCamera();
         }
     }
