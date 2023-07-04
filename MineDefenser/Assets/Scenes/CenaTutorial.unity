@@ -28259,7 +28259,7 @@ MonoBehaviour:
     indica que acabou completamente."
   - "Para produzir carv\xE3o, precisamos de madeira, que conseguimos cortando as
     \xE1rvores."
-  - "Exelente! Agora constua uma carvoeira para transformarmos as madeiras em carv\xE3o
+  - "Exelente! Agora construa uma carvoeira para transformarmos as madeiras em carv\xE3o
     vegetal."
   - "Espere o carv\xE3o ficar pronto"
   - "Agora que temos carv\xE3o podemos abastecer nossas armas"
@@ -28272,6 +28272,12 @@ MonoBehaviour:
     Ouvi dizer que \xE9 poss\xEDvel encontrar at\xE9 mesmo diamantes por aqui."
   - "Colete alguns L\xE1pis Lazulis para que possamos encantar as nossas armas."
   - Boa! Agora saia da mina para encantarmos nossas armas.
+  - "Vamos dar caracter\xEDsticas especiais  as nossas armas."
+  - "Temos 3 op\xE7\xF5es de upgrades, sendo elas: lentid\xE3o, dano e alcance"
+  - "\xD3timo! S\xF3 nos resta esperar os inimigos."
+  - "Essa n\xE3o, est\xE3o mais fortes do que eu esperava! Precisamos acelerar nossas
+    armas! Vamos utilizar redstone para isso."
+  - "Geralmente voc\xEA encontra redstones na mina, mas dessa vez, vou te dar. "
   controles:
   - Clique na espada, aperte a tecla "2" ou utilize o scroll do mouse
   - Clique no zumbi para causar dano
@@ -28284,10 +28290,15 @@ MonoBehaviour:
   - "Clique no recipiente de carv\xE3o, aperte a tecla \"7\" ou utilize o scroll
     do mouse"
   - "Clique na arma para completar seu combust\xEDvel"
-  - Clique no trilho para abrir a mina.
-  - Clique no trilho para ir para a mina.
+  - Clique no trilho para abrir a mina
+  - Clique no trilho para ir para a mina
   - Clique na picareta, aperte a tecla "6" ou utilize o scroll do mouse
   - "Clique algumas vezes em um min\xE9rio de L\xE1pis Lazuli para miner\xE1-lo"
+  - Clique no martelo, aperte a tecla "5" ou utilize o scroll do mouse
+  - "Clique na arma para abrir suas op\xE7\xF5es de habilidades"
+  - Escolha 1 dos 3 upgrades
+  - Clique no recipiente de redstone, aperte a tecla "8" ou utilize o scroll do mouse
+  - "Clique na arma para deix\xE1-la mais  r\xE1pido"
   painelControles: {fileID: 104574579}
   objetosInterativos:
   - {fileID: 1951346252}
@@ -28297,12 +28308,17 @@ MonoBehaviour:
   - {fileID: 743985159}
   - {fileID: 1301230410}
   - {fileID: 659096084}
+  - {fileID: 583588761}
+  - {fileID: 224609047}
   zumbiTutorial: {fileID: 712350456439879649}
+  zumbiTutorialForte: {fileID: 0}
   scriptsAcessados:
   - {fileID: 1623597291}
   - {fileID: 694998980}
   - {fileID: 963194225}
   inimigoTutorial: {fileID: 2378314812284475804, guid: 6d769d00613fbc7468877f42ec59f91e, type: 3}
+  inimigoTutorialForte: {fileID: 2378314812284475804, guid: 382cacd6192c31d4887134e2f3db676e, type: 3}
+  projetilTutorial: {fileID: 6106228691868816546, guid: 13a78a44694b2ba47907b27ea829ad0f, type: 3}
   velocidadeEscrita: 0.02
 --- !u!4 &1954942027
 Transform:

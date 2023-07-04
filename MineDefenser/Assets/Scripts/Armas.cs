@@ -24,7 +24,7 @@ public class Armas : MonoBehaviour
     [SerializeField] string upgrade;
     public GameObject painelUpgrades;
     [SerializeField] Material materialUpgrade1, materialUpgrade2, materialUpgrade3;
-    bool painelUpgradesAtivado;
+    public bool painelUpgradesAtivado;
     public List<Renderer> materiaisMetalicos;
     //A cor dos materiais metalicos mudam de acordo com o upgrade
 

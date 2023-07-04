@@ -15,9 +15,10 @@ public class ControladorTutorial : MonoBehaviour
     [SerializeField] List<GameObject> objetosInterativos;
     Transform antigoParent;
     Player player;
-    [SerializeField] GameObject zumbiTutorial;
+    [SerializeField] GameObject zumbiTutorial, zumbiTutorialForte;
     [SerializeField] List<GameObject> scriptsAcessados;
-    [SerializeField] GameObject inimigoTutorial;
+    [SerializeField] GameObject inimigoTutorial, inimigoTutorialForte;
+    [SerializeField] GameObject projetilTutorial;
 
 
     public float velocidadeEscrita;
@@ -289,7 +290,7 @@ public class ControladorTutorial : MonoBehaviour
         textoControles2.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
         StartCoroutine(EscreverTextoTutorial(10));
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(7f);
         StartCoroutine(EscreverTextoTutorial(11));
         yield return new WaitForSeconds(3f);
         textoControles.text = controles[12];
@@ -319,7 +320,114 @@ public class ControladorTutorial : MonoBehaviour
         etapaConcluida = false;
         textoControles2.gameObject.SetActive(false);
         StartCoroutine(EscreverTextoTutorial(12));
+        StartCoroutine(Encantar());
 
+        yield return null;
+    }
+
+    IEnumerator Encantar()
+    {
+        while(!etapaConcluida)
+        {
+            if(scriptsAcessados[2].GetComponent<Camera>().estaNaMina == false) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        int lapisLazuliDoPlayer = player.lapisLazuli;
+        //Escrevendo os primeiros textos
+        StartCoroutine(EscreverTextoTutorial(13));
+        yield return new WaitForSeconds(2f);
+        textoControles.text = controles[14];
+        textoControles2.text = controles[14];
+        //Deiaxando o painel dos controles visivel
+        painelControles.SetActive(true);
+        //Destacando o elemento da HUD
+        antigoParent = objetosInterativos[7].transform.parent;
+        objetosInterativos[7].transform.SetParent(painelControles.transform);
+        //Conferindo se o comando foi cumprido
+        while(!etapaConcluida)
+        {
+            if(player.inventario == "melhorar") etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        //Volta o elemento destacado da HUD para seu estado normal
+        objetosInterativos[7].transform.SetParent(antigoParent);
+        //Novos textos
+        textoControles.text = controles[15];
+        textoControles2.text = controles[15];
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        GameObject besta = GameObject.Find("Besta(Clone)");
+        while(!etapaConcluida)
+        {
+            if(besta.GetComponent<Armas>().painelUpgradesAtivado) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
+        StartCoroutine(EscreverTextoTutorial(14));
+        yield return new WaitForSeconds(4f);
+        textoControles.text = controles[16];
+        textoControles2.text = controles[16];
+        //Deiaxando o painel dos controles visivel
+        painelControles.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        while(!etapaConcluida)
+        {
+            if(player.lapisLazuli < lapisLazuliDoPlayer) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        StartCoroutine(EscreverTextoTutorial(15));
+        StartCoroutine(WaveFinal());
+        yield return null;
+    }
+
+    IEnumerator WaveFinal()
+    {
+        yield return new WaitForSeconds(3f);
+        GameObject besta = GameObject.Find("Besta(Clone)");
+        besta.GetComponent<Armas>().combustivel = 999999999;
+        zumbiTutorialForte = Instantiate(inimigoTutorialForte, scriptsAcessados[1].transform.position + scriptsAcessados[1].GetComponent<WaveSpawner>().offSet, scriptsAcessados[1].transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidade = 0;
+        zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidadeMinima = 0;
+        StartCoroutine(EscreverTextoTutorial(16));
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(EscreverTextoTutorial(17));
+        yield return new WaitForSeconds(3f);
+        textoControles.text = controles[17];
+        textoControles2.text = controles[17];
+        //Deiaxando o painel dos controles visivel
+        painelControles.SetActive(true);
+        antigoParent = objetosInterativos[8].transform.parent;
+        objetosInterativos[8].transform.SetParent(painelControles.transform);
+        while(!etapaConcluida)
+        {
+            if(player.inventario == "redstone") etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        objetosInterativos[8].transform.SetParent(antigoParent);
+        player.redstone ++;
+        textoControles.text = controles[18];
+        textoControles2.text = controles[18];
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        int redstoneDoPlayer = player.redstone;
+        while(!etapaConcluida)
+        {
+            if(player.redstone < redstoneDoPlayer) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidade = 3;
+        zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidadeMinima = 2;
+        besta.GetComponent<Armas>().projetil = projetilTutorial;
         yield return null;
     }
 }
