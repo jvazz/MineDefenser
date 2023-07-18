@@ -596,7 +596,7 @@ MonoBehaviour:
   alvo: 0
   velocidade: 3
   velocidadeMinima: 2
-  modoTutoial: 1
+  modoTutoial: 0
 --- !u!114 &4133541734176763161
 MonoBehaviour:
   m_ObjectHideFlags: 0

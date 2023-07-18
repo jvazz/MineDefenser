@@ -81,7 +81,7 @@ MonoBehaviour:
   alvo: {fileID: 0}
   distanciaColisao: 0.1
   offSet: {x: 0, y: 1.75, z: 0}
-  dano: 333
+  dano: 1226
   area: 0
   particulaExplosao: {fileID: 0}
   lentidao: 0

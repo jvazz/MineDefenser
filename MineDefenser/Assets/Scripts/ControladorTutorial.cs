@@ -391,8 +391,25 @@ public class ControladorTutorial : MonoBehaviour
         yield return new WaitForSeconds(3f);
         GameObject besta = GameObject.Find("Besta(Clone)");
         besta.GetComponent<Armas>().combustivel = 999999999;
+        zumbiTutorial = Instantiate(inimigoTutorial, scriptsAcessados[1].transform.position + scriptsAcessados[1].GetComponent<WaveSpawner>().offSet, scriptsAcessados[1].transform.rotation);
+        zumbiTutorial.GetComponent<Inimigo>().TomaDano(-5);
+        while(!etapaConcluida)
+        {
+            if(zumbiTutorial == null) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        zumbiTutorial = Instantiate(inimigoTutorial, scriptsAcessados[1].transform.position + scriptsAcessados[1].GetComponent<WaveSpawner>().offSet, scriptsAcessados[1].transform.rotation);
+        zumbiTutorial.GetComponent<Inimigo>().TomaDano(-5);
+        while(!etapaConcluida)
+        {
+            if(zumbiTutorial == null) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
         zumbiTutorialForte = Instantiate(inimigoTutorialForte, scriptsAcessados[1].transform.position + scriptsAcessados[1].GetComponent<WaveSpawner>().offSet, scriptsAcessados[1].transform.rotation);
         yield return new WaitForSeconds(0.5f);
+        besta.GetComponent<Armas>().tempoDelay = 999999999;
         zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidade = 0;
         zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidadeMinima = 0;
         StartCoroutine(EscreverTextoTutorial(16));
@@ -425,9 +442,21 @@ public class ControladorTutorial : MonoBehaviour
             yield return null;
         }
         etapaConcluida = false;
+        besta.GetComponent<Armas>().tempoDelay = 0.5f;
+        besta.GetComponent<Armas>().tempoCorrente = 0.25f;
         zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidade = 3;
         zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidadeMinima = 2;
+        GameObject projetilAntigo = besta.GetComponent<Armas>().projetil;
         besta.GetComponent<Armas>().projetil = projetilTutorial;
+        while(!etapaConcluida)
+        {
+            if(zumbiTutorialForte == null) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        besta.GetComponent<Armas>().redstoneOn = false;
+        zumbiTutorialForte = Instantiate(inimigoTutorialForte, scriptsAcessados[1].transform.position + scriptsAcessados[1].GetComponent<WaveSpawner>().offSet, scriptsAcessados[1].transform.rotation);
+        besta.GetComponent<Armas>().projetil = projetilAntigo;
         yield return null;
     }
 }
