@@ -27,6 +27,8 @@ public class Armas : MonoBehaviour
     public bool painelUpgradesAtivado;
     public List<Renderer> materiaisMetalicos;
     //A cor dos materiais metalicos mudam de acordo com o upgrade
+    GameObject inventario;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class Armas : MonoBehaviour
         painelUpgrades.SetActive(false);
         painelUpgradesAtivado = false;
         upgrade = "padrao";
+        inventario = GameObject.Find("Inventario");
     }
 
     // Update is called once per frame
@@ -168,6 +171,7 @@ public class Armas : MonoBehaviour
                 {
                     painelUpgradesAtivado = true;
                     painelUpgrades.SetActive(true);
+                    inventario.GetComponent<Inventario>().BotoesInventario(1);
                 }
             }else
             {
@@ -229,6 +233,7 @@ public class Armas : MonoBehaviour
             }
         }
 
+        painelUpgradesAtivado = false;
         painelUpgrades.SetActive(false);
     }
 }

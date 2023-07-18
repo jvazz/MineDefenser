@@ -8,7 +8,7 @@ public class ControladorAldeao : MonoBehaviour
     Player player;
     public GameObject aldeaoVida;
     [SerializeField] float tempoSeguro;
-    [SerializeField] bool taNascido;
+    public bool taNascido;
     [SerializeField] Vector3 posicaoCasa;
     [SerializeField] Vector3 posicaoAldeao;
     [SerializeField] float velocidadeAldeao;
@@ -41,22 +41,7 @@ public class ControladorAldeao : MonoBehaviour
                         taNascido = true;
                     }
                 }
-                /*if(controladorDeWaves.GetComponent<WaveSpawner>().contadorDeWaves >= 2)
-                {
-                if(player.nivelPicareta < 5)
-                {
-                    aldeaoPicareta.SetActive(true);
-                }
-                }*/
-
-                //aldeaoVida.SetActive(true);
-                //aldeaoPicareta.SetActive(true);
             }
-        }
-        else
-        {
-            //aldeaoVida.SetActive(false);
-            //aldeaoPicareta.SetActive(false);
         }
 
         if(taNascido && aldeaoVida.transform.position != posicaoAldeao)

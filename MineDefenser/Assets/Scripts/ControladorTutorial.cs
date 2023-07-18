@@ -442,6 +442,7 @@ public class ControladorTutorial : MonoBehaviour
             yield return null;
         }
         etapaConcluida = false;
+        textoControles2.gameObject.SetActive(false);
         besta.GetComponent<Armas>().tempoDelay = 0.5f;
         besta.GetComponent<Armas>().tempoCorrente = 0.25f;
         zumbiTutorialForte.GetComponent<SeguidorDeCaminhos>().velocidade = 3;
@@ -457,6 +458,40 @@ public class ControladorTutorial : MonoBehaviour
         besta.GetComponent<Armas>().redstoneOn = false;
         zumbiTutorialForte = Instantiate(inimigoTutorialForte, scriptsAcessados[1].transform.position + scriptsAcessados[1].GetComponent<WaveSpawner>().offSet, scriptsAcessados[1].transform.rotation);
         besta.GetComponent<Armas>().projetil = projetilAntigo;
+        StartCoroutine(AldeaoVida());
         yield return null;
+    }
+
+    IEnumerator AldeaoVida()
+    {
+        while(!etapaConcluida)
+        {
+            if(zumbiTutorialForte == null) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        //Escrevendo os primeiros textos
+        StartCoroutine(EscreverTextoTutorial(18));
+        yield return new WaitForSeconds(7f);
+        scriptsAcessados[3].GetComponent<ControladorAldeao>().taNascido = true;
+        StartCoroutine(EscreverTextoTutorial(19));
+        yield return new WaitForSeconds(3f);
+        player.diamante = 1;
+        textoControles.text = controles[19];
+        textoControles2.text = controles[19];
+        painelControles.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        painelControles.SetActive(false);
+        textoControles2.gameObject.SetActive(true);
+        objetosInterativos[9].SetActive(true);
+        while(!etapaConcluida)
+        {
+            if(player.diamante <= 0) etapaConcluida = true;
+            yield return null;
+        }
+        etapaConcluida = false;
+        objetosInterativos[9].SetActive(false);
+        textoControles2.gameObject.SetActive(false);
+        StartCoroutine(EscreverTextoTutorial(20));
     }
 }
