@@ -29,6 +29,17 @@ public class Loja : MonoBehaviour
             {
                 botoes[i].interactable = false;
             }
+
+            if(i == 4)
+            {
+                if(player.ferro >= precos[i])
+                {
+                    botoes[i].interactable = true;
+                }else
+                {
+                    botoes[i].interactable = false;
+                }
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))

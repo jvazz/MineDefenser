@@ -102,7 +102,7 @@ public class EspacoDeConstrucao : MonoBehaviour
                 case "IronGolen" : 
                     Destroy(minhaConstrucao);
                     minhaConstrucao = Instantiate(player.listaCostrucoes[4], transform.position + offset, Quaternion.identity);
-                    player.ouro -= 150;
+                    player.ferro -= 10;
                     player.modoContrucao = false;
                     minhaConstrucao.GetComponent<IronGolem>().meuLugar = this;
                     break;

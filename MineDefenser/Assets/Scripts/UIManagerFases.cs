@@ -27,13 +27,15 @@ public class UIManagerFases : MonoBehaviour
 
     public void JogarNovamente()
     {
-        if(player.numeroDaFase == 1)
+        /*if(player.numeroDaFase == 1)
         {
             SceneManager.LoadScene("SampleScene");
         }else
         {
             SceneManager.LoadScene("Fase" + player.numeroDaFase.ToString(""));
-        }
+        }*/
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Quit()

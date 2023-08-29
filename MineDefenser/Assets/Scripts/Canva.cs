@@ -9,6 +9,7 @@ public class Canva : MonoBehaviour
     public bool jogoPausado;
     public GameObject painelPause;
     public GameObject painelConfirmacao;
+    GameObject player;
     string objetivo;
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Canva : MonoBehaviour
         jogoPausado = false;
         painelPause.SetActive(false);
         painelConfirmacao.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -27,7 +29,10 @@ public class Canva : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Pausar();
+            if(player.GetComponent<Loja>().lojaAberta == false)
+            {
+                Pausar();
+            }
         }
     }
 

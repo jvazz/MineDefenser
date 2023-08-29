@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Armas : MonoBehaviour
 {
+    public bool combustivelInfinito = false;
     public Transform alvo;
     public float raio = 8;
     public Transform parteQueGira;
@@ -141,7 +142,10 @@ public class Armas : MonoBehaviour
     {
         if(!redstoneOn)
         {
-            combustivel -= 1;
+            if(!combustivelInfinito)
+            {
+                combustivel -= 1;
+            }
         }
         GameObject meuTiro;
         meuTiro = Instantiate(projetil, parteQueGira.position, parteQueGira.rotation);

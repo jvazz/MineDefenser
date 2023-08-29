@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Fases : MonoBehaviour
 {
     public GameObject panelFacil, panelMedio, panelDificil;
-    public Button fase1, fase2, fase3, fase4, fase5, fase6;
+    public Button fase1, fase2, fase3, fase4, fase5;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = false;
                 fase4.interactable = false;
                 fase5.interactable = false;
-                fase6.interactable = false;
                 break;
 
             case 1 : 
@@ -34,7 +33,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = false;
                 fase4.interactable = false;
                 fase5.interactable = false;
-                fase6.interactable = false;
                 break;
 
             case 2 : 
@@ -43,7 +41,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = true;
                 fase4.interactable = false;
                 fase5.interactable = false;
-                fase6.interactable = false;
                 break;
 
             case 3 : 
@@ -52,7 +49,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = true;
                 fase4.interactable = true;
                 fase5.interactable = false;
-                fase6.interactable = false;
                 break;
 
             case 4 : 
@@ -61,7 +57,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = true;
                 fase4.interactable = true;
                 fase5.interactable = true;
-                fase6.interactable = false;
                 break;
 
             case 5 : 
@@ -70,7 +65,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = true;
                 fase4.interactable = true;
                 fase5.interactable = true;
-                fase6.interactable = true;
                 break;
 
             case 6 : 
@@ -79,7 +73,6 @@ public class Fases : MonoBehaviour
                 fase3.interactable = true;
                 fase4.interactable = true;
                 fase5.interactable = true;
-                fase6.interactable = true;
                 break;
 
             default :
@@ -125,7 +118,11 @@ public class Fases : MonoBehaviour
 
     public void Fase(int fase)
     {
-        if(fase == 1)
+        if(fase == 0)
+        {
+            SceneManager.LoadScene("CenaTutorial");
+        }
+        else if(fase == 1)
         {
             SceneManager.LoadScene("SampleScene");
         }else

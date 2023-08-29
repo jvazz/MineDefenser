@@ -493,5 +493,14 @@ public class ControladorTutorial : MonoBehaviour
         objetosInterativos[9].SetActive(false);
         textoControles2.gameObject.SetActive(false);
         StartCoroutine(EscreverTextoTutorial(20));
+        yield return new WaitForSeconds(7f);
+        StartCoroutine(Fim());
+    }
+
+    IEnumerator Fim()
+    {
+        StartCoroutine(EscreverTextoTutorial(21));
+        yield return new WaitForSeconds(7f);
+        objetosInterativos[10].SetActive(true);
     }
 }
